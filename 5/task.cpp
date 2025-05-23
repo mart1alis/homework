@@ -8,7 +8,7 @@
 using namespace std;
 
 int main() {
-    // Чтение чисел из файлов A.txt и B.txt
+
     ifstream fileA("A.txt");
     ifstream fileB("B.txt");
     
