@@ -5,13 +5,13 @@ import (
 	"unicode"
 )
 
-func bash(text string) string {
+func caesar(text string, shift int) string {
 	result := ""
 	for _, char := range text {
 		if unicode.IsUpper(char) {
-			result += string(('Z' - (int(char) - 'A')))
+			result += string((int(char)-'A'+shift)%33 + 'A')
 		} else if unicode.IsLower(char) {
-			result += string(('z' - (int(char) - 'a')))
+			result += string((int(char)-'a'+shift)%33 + 'a')
 		} else {
 			result += string(char)
 		}
@@ -21,9 +21,13 @@ func bash(text string) string {
 
 func main() {
 	var text string
+	var shift int
 
 	fmt.Print("Text: ")
 	fmt.Scanln(&text)
 
-	fmt.Println("Result: ", bash(text))
+	fmt.Print("Shift: ")
+	fmt.Scanln(&shift)
+
+	fmt.Println("Result:", caesar(text, shift))
 }
